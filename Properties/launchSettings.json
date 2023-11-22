@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "all days": {
+      "commandName": "Project",
+      "commandLineArgs": "all"
+    },
+    "current day": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    },
+    "current day part 1": {
+      "commandName": "Project",
+      "commandLineArgs": "-part1"
+    },
+    "current day part 2": {
+      "commandName": "Project",
+      "commandLineArgs": "-part2"
+    },
+    "all days part 1": {
+      "commandName": "Project",
+      "commandLineArgs": "all -part1"
+    },
+    "all days part 2": {
+      "commandName": "Project",
+      "commandLineArgs": "all -part2"
+    },
+    "specific day": {
+      "commandName": "Project",
+      "commandLineArgs": "1"
+    }
+  }
+}
