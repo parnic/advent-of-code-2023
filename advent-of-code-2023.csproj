@@ -26,11 +26,16 @@
 	<ItemGroup>
 	  <None Remove="inputs\01.txt" />
 	  <None Remove="inputs\01a.txt" />
+	  <None Remove="inputs\01b.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="inputs\01.txt" />
 	  <EmbeddedResource Include="inputs\01a.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="inputs\01b.txt" />
 	</ItemGroup>
 
 </Project>
