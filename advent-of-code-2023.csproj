@@ -32,6 +32,8 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="inputs\01.txt" />
 	  <EmbeddedResource Include="inputs\01a.txt" />
+	  <EmbeddedResource Include="inputs\02.txt" />
+	  <EmbeddedResource Include="inputs\02a.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
