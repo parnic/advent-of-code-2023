@@ -5,6 +5,8 @@ namespace aoc2023;
 internal class Day03 : Day
 {
     private char[,]? grid;
+    private readonly List<int> partNums = new();
+    private readonly Dictionary<ivec2, List<int>> gears = new();
 
     internal override void Parse()
     {
@@ -17,11 +19,6 @@ internal class Day03 : Day
                 grid[row, col] = lines[row][col];
             }
         }
-    }
-
-    internal override string Part1()
-    {
-        long sum = 0;
 
         string currNumStr = "";
         for (int row = 0; row < grid!.GetLength(0); row++)
@@ -55,87 +52,41 @@ internal class Day03 : Day
                             continue;
                         }
 
+                        if (grid[n.y, n.x] == '*')
+                        {
+                            if (!gears.ContainsKey(n))
+                            {
+                                gears.Add(n, new List<int>());
+                            }
+
+                            gears[n].Add(currNum);
+                        }
+
                         valid = true;
-                        break;
                     }
                 }
 
                 if (valid)
                 {
-                    sum += currNum;
+                    partNums.Add(currNum);
                 }
 
                 currNumStr = string.Empty;
             }
         }
+    }
 
-        return $"Sum of part numbers: <+white>{sum}";
+    internal override string Part1()
+    {
+        long total = partNums.Sum();
+
+        return $"Sum of part numbers: <+white>{total}";
     }
 
     internal override string Part2()
     {
-        // a much better way to do this would be to use the number-parsing in part 1 to store which star a given number is touching,
-        // then find all numbers that touch the same star more than once.
-        // this solution is...not great.
-        long total = 0;
-        for (int row = 0; row < grid!.GetLength(0); row++)
-        {
-            for (int col = 0; col < grid!.GetLength(1); col++)
-            {
-                if (grid[row, col] != '*')
-                {
-                    continue;
-                }
-
-                long lastRow = -1;
-                long lastCol = -1;
-                ivec2 pt = new(col, row);
-                List<int> nums = new();
-                foreach (var n in pt.GetNeighbors())
-                {
-                    if (!grid[n.y, n.x].IsDigit())
-                    {
-                        continue;
-                    }
-
-                    if (lastRow == -1 || lastCol == -1 || lastRow != n.y || System.Math.Abs(lastCol - n.x) > 1)
-                    {
-                        var x = n.x;
-                        while (x >= 0 && grid[n.y, x].IsDigit())
-                        {
-                            x--;
-                        }
-
-                        if (x < 0 || !grid[n.y, x].IsDigit())
-                        {
-                            x++;
-                        }
-
-                        var numStr = string.Empty;
-                        while (x < grid.GetLength(1) && grid[n.y, x].IsDigit())
-                        {
-                            numStr += grid[n.y, x];
-                            x++;
-                        }
-
-                        var num = int.Parse(numStr);
-                        // this isn't quite right...it's possible the same number exists 2+ times around a star, but this works with my input, so...
-                        nums.AddUnique(num);
-                    }
-
-                    lastRow = n.y;
-                    lastCol = n.x;
-                }
-
-                if (nums.Count < 2)
-                {
-                    continue;
-                }
-
-                long mult = nums.Aggregate(1L, (current, num) => current * num);
-                total += mult;
-            }
-        }
+        long total = gears.Where(gear => gear.Value.Count == 2)
+            .Sum(gear => gear.Value.Aggregate(1L, (current, num) => current * num));
 
         return $"Sum of gear ratios: <+white>{total}";
     }
