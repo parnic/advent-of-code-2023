@@ -72,9 +72,9 @@ public static class Parsing
 
     internal static string ReadAllText(string filename)
     {
-        string contents = string.Empty;
-        ReadData(filename, (line) => contents = line);
-        return contents;
+        StringBuilder sb = new();
+        ReadData(filename, (line) => sb.AppendLine(line));
+        return sb.ToString().Trim();
     }
 
     internal static IEnumerable<string> ReadAllLines(string filename)
