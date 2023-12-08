@@ -11,4 +11,17 @@ public static class Extensions
             list.Add(elem);
         }
     }
+
+    public static int IndexOf<T>(this ICollection<T> list, T elem) where T : IEquatable<T>
+    {
+        for (int idx = 0; idx < list.Count; idx++)
+        {
+            if (list.ElementAt(idx).Equals(elem))
+            {
+                return idx;
+            }
+        }
+
+        return -1;
+    }
 }
