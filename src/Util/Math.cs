@@ -1,12 +1,14 @@
-﻿namespace aoc2023.Util;
+﻿using System.Numerics;
+
+namespace aoc2023.Util;
 
 public static class Math
 {
-    public static ulong GCD(ulong a, ulong b)
+    public static T GCD<T>(T a, T b) where T : IBinaryInteger<T>
     {
         while (true)
         {
-            if (b == 0)
+            if (b == T.Zero)
             {
                 return a;
             }
@@ -17,13 +19,13 @@ public static class Math
         }
     }
 
-    public static ulong LCM(params ulong[] nums)
+    public static T LCM<T>(params T[] nums) where T : IBinaryInteger<T>
     {
         var num = nums.Length;
         switch (num)
         {
             case 0:
-                return 0;
+                return T.Zero;
             case 1:
                 return nums[0];
         }
@@ -37,7 +39,7 @@ public static class Math
         return ret;
     }
 
-    private static ulong lcm(ulong a, ulong b)
+    private static T lcm<T>(T a, T b) where T : IBinaryInteger<T>
     {
         return (a * b) / GCD(a, b);
     }
