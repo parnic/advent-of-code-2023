@@ -17,6 +17,17 @@ internal class Day10 : Day
         start,
     }
 
+    private static readonly Dictionary<tiletype, char> drawChars = new()
+    {
+        {tiletype.ns, Constants.BoxVert},
+        {tiletype.ew, Constants.BoxHorz},
+        {tiletype.ne, Constants.BoxCurveNE},
+        {tiletype.nw, Constants.BoxCurveNW},
+        {tiletype.sw, Constants.BoxCurveSW},
+        {tiletype.se, Constants.BoxCurveSE},
+        {tiletype.ground, ' '},
+    };
+
     private readonly Dictionary<ivec2, tiletype> grid = [];
     private readonly Dictionary<ivec2, int> pipeLocations = [];
     private ivec2 startLoc;
@@ -184,24 +195,33 @@ internal class Day10 : Day
         }
     }
 
+    void RenderGrid(List<ivec2>? interiors = null)
+    {
+        for (int row = 0; row < height; row++)
+        {
+            for (int col = 0; col < width; col++)
+            {
+                var p = new ivec2(col, row);
+                if (pipeLocations.ContainsKey(p))
+                {
+                    Logger.Log($"<bgred>{drawChars[grid[p]]}<r>");
+                }
+                else if (interiors?.Contains(p) == true)
+                {
+                    Logger.Log($"<bgblue>{drawChars[grid[p]]}<r>");
+                }
+                else
+                {
+                    Console.Write(drawChars[grid[p]]);
+                }
+            }
+            Logger.LogLine("");
+        }
+    }
+
     internal override string Part1()
     {
-        // render your map!
-        // for (int row = 0; row < height; row++)
-        // {
-        //     for (int col = 0; col < width; col++)
-        //     {
-        //         if (visited.ContainsKey(new ivec2(col, row)))
-        //         {
-        //             Console.Write(Constants.SolidBlock);
-        //         }
-        //         else
-        //         {
-        //             Console.Write('.');
-        //         }
-        //     }
-        //     Console.WriteLine();
-        // }
+        // RenderGrid();
 
         int furthestLocation = pipeLocations.Max(v => v.Value);
         return $"Furthest point from start requires #steps: <+white>{furthestLocation}";
@@ -233,7 +253,7 @@ internal class Day10 : Day
             }
         }
 
-        int interior = 0;
+        List<ivec2> interior = new();
         for (int row = 0; row < height; row++)
         {
             bool bInside = false;
@@ -258,11 +278,13 @@ internal class Day10 : Day
 
                 if (bInside && !pipeLocations.ContainsKey(pt))
                 {
-                    interior++;
+                    interior.Add(pt);
                 }
             }
         }
 
-        return $"Number of spaces interior to the pipeline: <+white>{interior}";
+        // RenderGrid(interior);
+
+        return $"Number of spaces interior to the pipeline: <+white>{interior.Count}";
     }
 }

@@ -64,7 +64,7 @@ else
             var type = types.FirstOrDefault(x => x.Name == $"Day{desiredDay.PadLeft(2, '0')}");
             if (type == null)
             {
-                Logger.Log($"Unknown day <cyan>{desiredDay}<r>");
+                Logger.LogLine($"Unknown day <cyan>{desiredDay}<r>");
             }
             else
             {

@@ -6,12 +6,12 @@ public static class Testing
 {
     internal static void StartTestSet(string name)
     {
-        Logger.Log($"<underline>test: {name}<r>");
+        Logger.LogLine($"<underline>test: {name}<r>");
     }
 
     internal static void StartTest(string label)
     {
-        Logger.Log($"<magenta>{label}<r>");
+        Logger.LogLine($"<magenta>{label}<r>");
     }
 
     internal static void TestCondition(Func<bool> a, bool printResult = true)
@@ -21,14 +21,14 @@ public static class Testing
             Debug.Assert(false);
             if (printResult)
             {
-                Logger.Log("<red>x<r>");
+                Logger.LogLine("<red>x<r>");
             }
         }
         else
         {
             if (printResult)
             {
-                Logger.Log("<green>✓<r>");
+                Logger.LogLine("<green>✓<r>");
             }
         }
     }

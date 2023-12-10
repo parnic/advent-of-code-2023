@@ -43,6 +43,6 @@ internal class Timer : IDisposable
         {
             color = "<yellow>";
         }
-        Logger.Log($"<cyan>{name}{(!string.IsNullOrEmpty(name) ? " t" : "T")}ook {color}{elapsed:N1}{unit}<r>");
+        Logger.LogLine($"<cyan>{name}{(!string.IsNullOrEmpty(name) ? " t" : "T")}ook {color}{elapsed:N1}{unit}<r>");
     }
 }

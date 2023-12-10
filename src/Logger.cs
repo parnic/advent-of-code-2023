@@ -44,10 +44,16 @@ internal class Logger
         { "reverse", "\u001b[7m" },
     };
 
-    public static void Log(string msg)
+    public static void LogLine(string msg)
     {
         Console.WriteLine(InsertColorCodes(msg));
         Debug.WriteLine(StripColorCodes(msg));
+    }
+
+    public static void Log(string msg)
+    {
+        Console.Write(InsertColorCodes(msg));
+        Debug.Write(StripColorCodes(msg));
     }
 
     private static string InsertColorCodes(string msg)

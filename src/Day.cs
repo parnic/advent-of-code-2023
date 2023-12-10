@@ -4,12 +4,12 @@ internal abstract class Day : IDisposable
 {
     public void Dispose()
     {
-        Logger.Log("");
+        Logger.LogLine("");
     }
 
     internal void Go(bool runPart1, bool runPart2)
     {
-        Logger.Log($"<reverse>{GetType().Name}<r>");
+        Logger.LogLine($"<reverse>{GetType().Name}<r>");
 
         using (new Timer("Parsing"))
         {
@@ -23,7 +23,7 @@ internal abstract class Day : IDisposable
             stopwatch.Stop();
             if (!string.IsNullOrEmpty(response))
             {
-                Logger.Log($"<+black>> part1: {response}<r>");
+                Logger.LogLine($"<+black>> part1: {response}<r>");
             }
             else
             {
@@ -38,7 +38,7 @@ internal abstract class Day : IDisposable
             stopwatch.Stop();
             if (!string.IsNullOrEmpty(response))
             {
-                Logger.Log($"<+black>> part2: {response}<r>");
+                Logger.LogLine($"<+black>> part2: {response}<r>");
             }
             else
             {
