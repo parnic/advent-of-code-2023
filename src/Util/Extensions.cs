@@ -42,4 +42,8 @@ public static class Extensions
     {
         return str[..index] + replace + str[(index + 1)..];
     }
+
+    public static bool SequenceEquals<T>(this T[,] a, T[,] b) => a.Rank == b.Rank
+                                                                 && Enumerable.Range(0, a.Rank).All(d=> a.GetLength(d) == b.GetLength(d))
+                                                                 && a.Cast<T>().SequenceEqual(b.Cast<T>());
 }
