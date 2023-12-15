@@ -24,4 +24,22 @@ public static class Extensions
 
         return -1;
     }
+
+    public static string ReplaceFirst(this string str, char ch, char replace)
+    {
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == ch)
+            {
+                return str.ReplaceAt(i, replace);
+            }
+        }
+
+        return str;
+    }
+
+    public static string ReplaceAt(this string str, int index, char replace)
+    {
+        return str[..index] + replace + str[(index + 1)..];
+    }
 }
