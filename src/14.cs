@@ -164,10 +164,10 @@ internal class Day14 : Day
             Tilt(part2, eastDir);
 
             var result = Stringify(part2);
-            if (seen.Count(g => g == result) == 2)
+            if (seen.Any(g => g == result))
             {
                 int periodStart = seen.FindIndex(g => g == result);
-                int periodLen = seen.Skip(periodStart + 1).ToList().FindIndex(g => g == result) + 1;
+                int periodLen = seen.Count - periodStart;
                 loopCycle = ((1000000000L - periodStart) % periodLen) + periodStart;
                 break;
             }
