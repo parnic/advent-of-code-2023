@@ -208,11 +208,11 @@ internal class Day10 : Day
                 }
                 else if (interiors?.Contains(p) == true)
                 {
-                    Logger.Log($"<bgblue>{drawChars[grid[p]]}<r>");
+                    Logger.Log($"<green>{Constants.SolidSmallSquare}<r>");
                 }
                 else
                 {
-                    Console.Write(drawChars[grid[p]]);
+                    Logger.Log(" ");
                 }
             }
             Logger.LogLine("");
@@ -283,7 +283,7 @@ internal class Day10 : Day
             }
         }
 
-        // RenderGrid(interior);
+        RenderGrid(interior);
 
         return $"Number of spaces interior to the pipeline: <+white>{interior.Count}";
     }
