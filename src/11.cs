@@ -81,7 +81,7 @@ internal class Day11 : Day
             }
         }
 
-        return $"<+white>{total}";
+        return $"Sum of shortest paths: <+white>{total}";
     }
 
     internal override string Part2()
@@ -101,6 +101,6 @@ internal class Day11 : Day
             }
         }
 
-        return $"<+white>{total}";
+        return $"Sum of expanded shortest paths: <+white>{total}";
     }
 }

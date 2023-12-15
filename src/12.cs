@@ -192,7 +192,7 @@ internal class Day12 : Day
     {
         long total = Solve(springList);
 
-        return $"<+white>{total}";
+        return $"Total number of arrangements: <+white>{total}";
     }
 
     internal override string Part2()
@@ -217,6 +217,6 @@ internal class Day12 : Day
 
         long total = unfolded.Sum(item => GetPermutations(item.puzzle, item.slots));
 
-        return $"<+white>{total}";
+        return $"Total number of unfolded arrangements: <+white>{total}";
     }
 }
