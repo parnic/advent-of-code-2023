@@ -93,14 +93,12 @@ internal class Day17 : Day
     internal override string Part1()
     {
         var result = Solve(0, 3);
-
-        return $"<+white>{result}";
+        return $"Least heat loss with 3 maximum steps in one direction: <+white>{result}";
     }
 
     internal override string Part2()
     {
         var result = Solve(4, 10);
-
-        return $"<+white>{result}";
+        return $"Least heat loss with 4 minimum and 10 maximum steps in one direction: <+white>{result}";
     }
 }
