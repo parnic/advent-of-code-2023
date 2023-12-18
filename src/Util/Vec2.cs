@@ -64,11 +64,39 @@ public readonly struct ivec2 : IEquatable<ivec2>, IComparable<ivec2>, IComparabl
         }
     }
 
+    public IEnumerable<ivec2> GetBoundedOrthogonalNeighbors(int minX, int minY, int maxX, int maxY)
+    {
+        foreach (var dir in FOURWAY)
+        {
+            var pt = this + dir;
+            if (!pt.IsWithinRange(minX, minY, maxX, maxY))
+            {
+                continue;
+            }
+
+            yield return pt;
+        }
+    }
+
     public IEnumerable<ivec2> GetNeighbors()
     {
         foreach (var dir in EIGHTWAY)
         {
             yield return this + dir;
+        }
+    }
+
+    public IEnumerable<ivec2> GetBoundedNeighbors(int minX, int minY, int maxX, int maxY)
+    {
+        foreach (var dir in EIGHTWAY)
+        {
+            var pt = this + dir;
+            if (!pt.IsWithinRange(minX, minY, maxX, maxY))
+            {
+                continue;
+            }
+
+            yield return pt;
         }
     }
 
@@ -88,6 +116,8 @@ public readonly struct ivec2 : IEquatable<ivec2>, IComparable<ivec2>, IComparabl
     public static bool operator <=(ivec2 a, ivec2 b) => (a.x <= b.x) && (a.y <= b.y);
     public static bool operator >(ivec2 a, ivec2 b) => (a.x > b.x) && (a.y > b.y);
     public static bool operator >=(ivec2 a, ivec2 b) => (a.x >= b.x) && (a.y >= b.y);
+
+    public bool IsWithinRange(int minX, int minY, int maxX, int maxY) => x >= minX && y >= minY && x <= maxX && y <= maxY;
 
     public bool Equals(ivec2 other)
     {
