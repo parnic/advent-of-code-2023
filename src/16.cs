@@ -148,7 +148,7 @@ internal class Day16 : Day
     {
         var beamdata = PropagateLight(new beaminfo(new ivec2(-1, 0), ivec2.RIGHT));
         long energized = NumEnergized(beamdata);
-        return $"<+white>{energized}";
+        return $"# energized tiles: <+white>{energized}";
     }
 
     internal override string Part2()
@@ -186,6 +186,6 @@ internal class Day16 : Day
                 highest = val;
             }
         }
-        return $"<+white>{highest}";
+        return $"Highest # energized tiles: <+white>{highest}";
     }
 }

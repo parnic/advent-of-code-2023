@@ -95,7 +95,7 @@ internal class Day21 : Day
         }
 
         long numVisited = reachableNow.Count;
-        return $"<+white>{numVisited}";
+        return $"Garden plots reachable in 24 steps: <+white>{numVisited}";
     }
 
     internal override string Part2()
@@ -128,6 +128,6 @@ internal class Day21 : Day
                           cornerTop + cornerRight + cornerBottom + cornerLeft +
                           (gridWidth + 1) * (smallTopRight + smallTopLeft + smallBottomRight + smallBottomLeft) +
                           gridWidth * (largeTopRight + largeTopLeft + largeBottomRight + largeBottomLeft);
-        return $"<+white>{numVisited}";
+        return $"Garden plots reachable in {steps:N0} steps: <+white>{numVisited}";
     }
 }

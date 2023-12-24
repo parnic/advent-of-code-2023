@@ -196,7 +196,7 @@ internal class Day23 : Day
 
         // Render();
 
-        return $"<+white>{dist}";
+        return $"# steps in longest hike: <+white>{dist}";
     }
 
     internal override string Part2()
@@ -246,6 +246,6 @@ internal class Day23 : Day
         seen.Clear();
         int dist = GetLongestDistanceFrom(graph, start, seen);
 
-        return $"<+white>{dist}";
+        return $"# steps in longest hike ignoring slopes: <+white>{dist}";
     }
 }

@@ -283,7 +283,7 @@ internal class Day10 : Day
             }
         }
 
-        RenderGrid(interior);
+        // RenderGrid(interior);
 
         return $"Number of spaces interior to the pipeline: <+white>{interior.Count}";
     }
