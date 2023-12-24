@@ -75,6 +75,8 @@
 	  <EmbeddedResource Include="inputs\20b.txt" />
 	  <EmbeddedResource Include="inputs\21.txt" />
 	  <EmbeddedResource Include="inputs\21a.txt" />
+	  <EmbeddedResource Include="inputs\24.txt" />
+	  <EmbeddedResource Include="inputs\24a.txt" />
 	  <None Remove="inputs\22.txt" />
 	  <EmbeddedResource Include="inputs\22.txt" />
 	  <None Remove="inputs\22a.txt" />
@@ -87,6 +89,10 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="inputs\01b.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Z3" Version="4.12.2" />
 	</ItemGroup>
 
 </Project>
